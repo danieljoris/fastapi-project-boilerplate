@@ -1,0 +1,53 @@
+[tool.poetry]
+name = "fastapi-project-boilerplate"
+version = "0.1.0"
+description = ""
+authors = ["Daniel Joris <danieljoris08@gmail.com>"]
+readme = "README.md"
+packages = [{ include = "src" }]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+fastapi = "0.100.0"
+uvicorn = { extras = ["standard"], version = "^0.23.1" }
+
+[tool.poetry.group.dev.dependencies]
+mypy = "^1.4.1"
+isort = "^5.12.0"
+flake8 = "^6.0.0"
+black = "^23.7.0"
+
+[tool.black]
+line-length = 95
+target-version = ["py39", "py310"]
+exclude = '''
+/(
+    \.git
+  | \.eggs
+  | \.idea
+  | \__pycache__
+  | \.hg
+  | \.mypy_cache
+  | \.tox
+  | \.venv
+  | \venv
+  | \front
+  | \build
+  | _build
+  | buck-out
+  | build
+  | dist
+)/
+'''
+
+[tool.isort]
+profile = "black"
+
+[tool.pytest.ini_options]
+minversion = "6.0"
+asyncio_mode = "auto"
+testpaths = ["tests"]
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
